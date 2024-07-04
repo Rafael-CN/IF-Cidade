@@ -1,37 +1,53 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import { Route } from "../common/Screen";
 import { Theme } from "../common/Theme";
+import CText from "../components/CText";
 
 function Home() {
 	return (
 		<View style={styles.container}>
 			<View style={styles.intro}>
-				<Text style={styles.welcome}>
-					Bem vindo a <Text style={{ fontWeight: "700" }}>Bagé</Text>
-				</Text>
-				<Text style={styles.subtitle}>Explore a rainha da fronteira</Text>
+				<CText style={styles.welcome}>
+					Bem vindo a <CText fw={700}>Bagé</CText>
+				</CText>
+				<CText style={styles.subtitle}>Explore a rainha da fronteira</CText>
 
-				<View style={{ marginTop: 15, flexDirection: "row", gap: 15 }}>
+				<View style={styles.tagRegion}>
 					<View style={[styles.tag, { backgroundColor: Theme.secondaryLight }]}>
-						<Text style={[styles.tagText, { color: Theme.secondary }]}>
+						<CText color={Theme.secondary} fw={800}>
 							Rio grande do sul
-						</Text>
+						</CText>
 					</View>
 
 					<View style={[styles.tag, { backgroundColor: Theme.primaryLight }]}>
-						<Text style={[styles.tagText, { color: Theme.primary }]}>
+						<CText color={Theme.primary} fw={800}>
 							Brasil
-						</Text>
+						</CText>
 					</View>
 				</View>
 			</View>
 
 			<View style={styles.info}>
-				<Text style={styles.infoText}>
+				<CText color={Theme.secondary} style={styles.infoText}>
 					Berço da Revolução Farroupilha e lar da charmosa Catedral
 					Metropolitana, Bagé encanta com sua rica história, cultura vibrante e
 					paisagens
-				</Text>
+				</CText>
+			</View>
+
+			<View
+				style={[
+					styles.info,
+					{ backgroundColor: Theme.primaryLight, alignItems: "center" },
+				]}
+			>
+				<Image
+					style={styles.infoImage}
+					source={require("../assets/brasao.png")}
+				></Image>
+				<CText color={Theme.primary} style={styles.infoTitle}>
+					Brasão
+				</CText>
 			</View>
 		</View>
 	);
@@ -63,6 +79,8 @@ const styles = StyleSheet.create({
 		color: Theme.dark,
 	},
 
+	tagRegion: { marginTop: 15, flexDirection: "row", gap: 15 },
+
 	tag: {
 		borderRadius: 5,
 		paddingHorizontal: 10,
@@ -76,17 +94,27 @@ const styles = StyleSheet.create({
 
 	info: {
 		width: "100%",
-		marginTop: 30,
+		marginTop: 25,
 		padding: 20,
 		borderRadius: 10,
-		backgroundColor: Theme.primaryLight,
+		backgroundColor: Theme.secondaryLight,
 	},
 
 	infoText: {
 		fontSize: 15,
 		lineHeight: 25,
 		fontWeight: "700",
-		color: Theme.primary,
+	},
+
+	infoTitle: {
+		fontSize: 15,
+		fontWeight: "800",
+		marginTop: 15,
+	},
+
+	infoImage: {
+		width: 200,
+		height: 230,
 	},
 });
 
